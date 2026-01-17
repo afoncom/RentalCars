@@ -18,3 +18,4 @@ protocol Car: AnyObject {
     func stop()
     func rent(_ isRented: Bool)
 }
+

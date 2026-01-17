@@ -9,10 +9,10 @@ import Foundation
 import Combine
 
 final class AllCarsViewModel: ObservableObject {
-    let objectWillChange = ObservableObjectPublisher()
+ 
     
-    @Published var allCars: [Car] = []
-    
+    @Published var allCars: [any Car] = []
+    @Published var showSheet = false
     
 }
 
