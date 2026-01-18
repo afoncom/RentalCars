@@ -6,7 +6,8 @@
 //
 
 protocol AllCarsPresenter {
-    
+    func loadCars()
+    func changeStatusCars(car: Car)
 }
 
 final class AllCarsPresenterImpl {
@@ -19,11 +20,17 @@ final class AllCarsPresenterImpl {
     ) {
         self.viewModel = viewModel
         self.agregator = agregator
-        
-        viewModel.allCars = agregator.getAllCars()
     }
 }
 
 extension AllCarsPresenterImpl: AllCarsPresenter {
     
+    func loadCars() {
+        viewModel.allCars = agregator.getAllCars()
+    }
+    
+    func changeStatusCars(car: Car) {
+        _ = agregator.rent(brand: car.brand, model: car.model, isRenting: true)
+        viewModel.allCars = agregator.getAllCars()
+    }
 }

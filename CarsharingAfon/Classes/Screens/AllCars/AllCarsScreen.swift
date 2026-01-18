@@ -30,13 +30,25 @@ struct AllCarsScreen: View {
                         Text("Окна: \(car.window),  Двери: \(car.door)")
                             .font(.subheadline)
                         Spacer()
-                        Text(car.isRented ? "Сдано" : "Свободно")
+                        Text(car.isRented ? "В аренде" : "Свободно")
                             .font(.caption)
                             .foregroundColor(car.isRented ? .red : .green)
                     }
                 }
+                .onTapGesture {
+                    viewModel.showSheet = true
+                }
+                .sheet(
+                    isPresented: $viewModel.showSheet,
+                    content: {
+                        GetCarsRentModule.build(car: car)
+                    }
+                )
             }
             .navigationTitle("Все автомобили")
+            .onAppear {
+                presenter.loadCars()
+            }
         }
     }
 }
@@ -57,7 +69,7 @@ fileprivate class AgregatorStub: Agregator {
     }
     
     func deleteAllCars() {
-
+        
     }
     
     func rent(brand: String, model: String, isRenting: Bool) -> Bool {
