@@ -8,7 +8,7 @@
 import Foundation
 
 protocol Agregator {
-    func getAllCars() -> [Car]
+    func getAllCars() -> [RegularCarImpl ]
     func deleteAllCars()
     func rent(brand: String, model: String, isRenting: Bool) -> Bool
     func startStopCar(brand: String, model: String, isStart: Bool) -> Bool

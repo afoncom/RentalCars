@@ -8,6 +8,6 @@
 import Foundation
 
 protocol CarManager {
-    func getAllCars() -> [Car]
+    func getAllCars() -> [RegularCarImpl]
     func deleteAllCars()
 }

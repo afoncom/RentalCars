@@ -9,10 +9,8 @@ import Foundation
 import Combine
 
 final class AllCarsViewModel: ObservableObject {
- 
-    
-    @Published var allCars: [any Car] = []
-    @Published var showSheet = false
+    @Published var allCars: [RegularCarImpl] = []
+    @Published var triggerAlert = false
     
 }
 

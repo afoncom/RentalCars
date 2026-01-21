@@ -7,7 +7,7 @@
 
 import Foundation
 
-class TruckImpl: Truck {
+struct TruckImpl: Truck {
     let brand: String
     
     let model: String
@@ -26,22 +26,22 @@ class TruckImpl: Truck {
     }
     
     func start() {
-        started = true
+//        started = true
     }
     
     func stop() {
-        started = false
+//        started = false
     }
     
     func up() {
-        open = true
+//        open = true
     }
     
     func down() {
-        open = false
+//        open = false
     }
     
     func rent(_ isRented: Bool) {
-        self.isRented = isRented
+//        self.isRented = isRented
     }
 }

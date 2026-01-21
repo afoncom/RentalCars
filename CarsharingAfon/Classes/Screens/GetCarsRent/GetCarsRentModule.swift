@@ -8,7 +8,7 @@
 import SwiftUI
 
 final class GetCarsRentModule {
-    static func build(car: any Car) -> some View {
+    static func build(car: RegularCarImpl) -> some View {
         let viewModel = GetCarsRentViewModel(selectedCar: car)
         let presenter = GetCarsRentPresenterImpl(
             viewModel: viewModel

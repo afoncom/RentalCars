@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol Car: AnyObject {
+protocol Car: Hashable, Equatable {
     var brand: String { get }
     var model: String { get }
     var window: Int { get }

@@ -14,8 +14,8 @@ class CarStatusProviderImpl: CarStatusProvider {
         self.carManagers = carManagers
     }
     
-    func rentedCars() -> [Car]{
-        var isRentCars: [Car] = []
+    func rentedCars() -> [RegularCarImpl]{
+        var isRentCars: [RegularCarImpl] = []
         
         for manager in carManagers {
             for car in manager.getAllCars() {

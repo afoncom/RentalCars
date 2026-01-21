@@ -9,13 +9,15 @@ import SwiftUI
 
 @main
 struct CarsharingAfonApp: App {
+    @StateObject private var coordinator = AppCoordinator()
+    
     private let carManager1 = CarManagerImpl(
         listCar: [
             RegularCarImpl(window: 4, door: 5, brand: "BMW", model: "M3"),
             RegularCarImpl(window: 4, door: 5, brand: "BMW", model: "X5"),
             RegularCarImpl(window: 4, door: 3, brand: "Audi", model: "A8"),
             RegularCarImpl(window: 4, door: 5, brand: "Audi", model: "A5"),
-            TruckImpl(window: 4, door: 3, brand: "Mercedes", model: "KM20")
+
         ]
     )
     
@@ -25,7 +27,6 @@ struct CarsharingAfonApp: App {
             RegularCarImpl(window: 4, door: 3, brand: "Tesla", model: "Model3"),
             RegularCarImpl(window: 4, door: 5, brand: "Renault", model: "Logan"),
             RegularCarImpl(window: 4, door: 5, brand: "Lada", model: "Vesta"),
-            TruckImpl(window: 4, door: 5, brand: "Niva", model: "Bukhanka")
         ]
     )
     
@@ -44,7 +45,15 @@ struct CarsharingAfonApp: App {
     
     var body: some Scene {
         WindowGroup {
-            AllCarsModule.build(agregator: agregator)
+            NavigationStack(path: $coordinator.path) {
+                AllCarsModule.build(agregator: agregator, coordinator: coordinator)
+                    .navigationDestination(for: Route.self) { route in
+                        switch route {
+                        case .carDetails(let car):
+                            GetCarsRentModule.build(car: car)
+                        }
+                    }
+            }
         }
     }
 }
