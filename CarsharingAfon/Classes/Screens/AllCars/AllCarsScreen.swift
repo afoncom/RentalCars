@@ -36,18 +36,19 @@ struct AllCarsScreen: View {
                     }
                 }
                 .onTapGesture {
-                    viewModel.showSheet = true
+                    presenter.showDetails(car: car)
                 }
-                .sheet(
-                    isPresented: $viewModel.showSheet,
-                    content: {
-                        GetCarsRentModule.build(car: car)
-                    }
-                )
             }
             .navigationTitle("Все автомобили")
-            .onAppear {
-                presenter.loadCars()
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {viewModel.triggerAlert = true}) {
+                        Image(systemName: "plus")
+                    }
+                }
+            }
+            .alert("Данный функционал ещё недоступен", isPresented: $viewModel.triggerAlert) {
+                Button ("ОК") { }
             }
         }
     }
@@ -58,13 +59,14 @@ struct AllCarsScreen: View {
         viewModel: AllCarsViewModel(),
         presenter: AllCarsPresenterImpl(
             viewModel: AllCarsViewModel(),
-            agregator: AgregatorStub()
+            agregator: AgregatorStub(),
+            coordinator: AllCarsCoordinatorStub()
         )
     )
 }
 
 fileprivate class AgregatorStub: Agregator {
-    func getAllCars() -> [any Car] {
+    func getAllCars() -> [RegularCarImpl] {
         []
     }
     
@@ -81,4 +83,8 @@ fileprivate class AgregatorStub: Agregator {
     }
 }
 
-
+fileprivate class AllCarsCoordinatorStub: AllCarsCoordinator {
+    func openCarDetails(carId: String) {
+        
+    }
+}

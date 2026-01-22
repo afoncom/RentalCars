@@ -7,7 +7,7 @@
 
 import Foundation
 
-class RegularCarImpl: RegularCar {
+class RegularCarImpl: Car {
     let brand: String
     
     let model: String

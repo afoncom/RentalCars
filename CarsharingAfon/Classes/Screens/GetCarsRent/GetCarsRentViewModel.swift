@@ -9,9 +9,9 @@ import Foundation
 import Combine
 
 final class GetCarsRentViewModel: ObservableObject {
-    @Published var selectedCar: any Car
+    @Published var selectedCarId: String
     
-    init(selectedCar: any Car) {
-        self.selectedCar = selectedCar
+    init(selectedCarId: String) {
+        self.selectedCarId = selectedCarId
     }
 }

@@ -14,7 +14,7 @@ class AgregatorImpl: Agregator {
         self.carManagers = carManagers
     }
     
-    func getAllCars() -> [Car] {
+    func getAllCars() -> [RegularCarImpl] {
         carManagers.flatMap { $0.getAllCars() }
     }
     

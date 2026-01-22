@@ -1,21 +1,26 @@
 //
-//  CarsharingAfonApp.swift
+//  Assembly.swift
 //  CarsharingAfon
 //
-//  Created by afon.com on 08.01.2026.
+//  Created by afon.com on 21.01.2026.
 //
 
-import SwiftUI
+import Foundation
 
-@main
-struct CarsharingAfonApp: App {
+
+protocol AppAssembly {
+    var agregator: Agregator { get }
+}
+
+
+class AppAssemblyImpl: AppAssembly {
     private let carManager1 = CarManagerImpl(
         listCar: [
             RegularCarImpl(window: 4, door: 5, brand: "BMW", model: "M3"),
             RegularCarImpl(window: 4, door: 5, brand: "BMW", model: "X5"),
             RegularCarImpl(window: 4, door: 3, brand: "Audi", model: "A8"),
             RegularCarImpl(window: 4, door: 5, brand: "Audi", model: "A5"),
-            TruckImpl(window: 4, door: 3, brand: "Mercedes", model: "KM20")
+
         ]
     )
     
@@ -25,7 +30,6 @@ struct CarsharingAfonApp: App {
             RegularCarImpl(window: 4, door: 3, brand: "Tesla", model: "Model3"),
             RegularCarImpl(window: 4, door: 5, brand: "Renault", model: "Logan"),
             RegularCarImpl(window: 4, door: 5, brand: "Lada", model: "Vesta"),
-            TruckImpl(window: 4, door: 5, brand: "Niva", model: "Bukhanka")
         ]
     )
     
@@ -38,13 +42,7 @@ struct CarsharingAfonApp: App {
         CarStatusProviderImpl(carManagers: carManagers)
     }
     
-    private var agregator: Agregator {
+    var agregator: Agregator {
         AgregatorImpl(carManagers: carManagers)
-    }
-    
-    var body: some Scene {
-        WindowGroup {
-            AllCarsModule.build(agregator: agregator)
-        }
     }
 }

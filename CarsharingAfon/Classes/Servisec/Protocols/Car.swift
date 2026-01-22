@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol Car: AnyObject {
+protocol Car {
     var brand: String { get }
     var model: String { get }
     var window: Int { get }
@@ -17,5 +17,11 @@ protocol Car: AnyObject {
     func start()
     func stop()
     func rent(_ isRented: Bool)
+}
+
+extension Car {
+    var id: String {
+        brand + model
+    }
 }
 

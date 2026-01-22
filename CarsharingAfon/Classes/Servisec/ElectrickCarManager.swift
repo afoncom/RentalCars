@@ -8,13 +8,13 @@
 import Foundation
 
 class ElectrickCarManager: CarManager {
-    private var cars: [Car]
+    private var cars: [RegularCarImpl]
     
-    init(cars: [Car]) {
+    init(cars: [RegularCarImpl]) {
         self.cars = cars
     }
     
-    func getAllCars() -> [Car] {
+    func getAllCars() -> [RegularCarImpl] {
         cars
     }
     

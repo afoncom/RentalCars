@@ -8,5 +8,5 @@
 import Foundation
 
 protocol CarStatusProvider {
-    func rentedCars() -> [Car]
+    func rentedCars() -> [RegularCarImpl]
 }

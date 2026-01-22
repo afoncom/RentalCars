@@ -7,30 +7,33 @@
 
 protocol AllCarsPresenter {
     func loadCars()
-    func changeStatusCars(car: Car)
+    func showDetails(car: RegularCarImpl)
 }
 
 final class AllCarsPresenterImpl {
     private let viewModel: AllCarsViewModel
     private let agregator: Agregator
+    private let coordinator: AllCarsCoordinator
     
     init(
         viewModel: AllCarsViewModel,
-        agregator: Agregator
+        agregator: Agregator,
+        coordinator: AllCarsCoordinator
     ) {
         self.viewModel = viewModel
         self.agregator = agregator
+        self.coordinator = coordinator
     }
 }
 
 extension AllCarsPresenterImpl: AllCarsPresenter {
     
     func loadCars() {
-        viewModel.allCars = agregator.getAllCars()
+        viewModel.allCars = agregator.getAllCars() 
     }
     
-    func changeStatusCars(car: Car) {
-        _ = agregator.rent(brand: car.brand, model: car.model, isRenting: true)
-        viewModel.allCars = agregator.getAllCars()
+    func showDetails(car: RegularCarImpl) {
+        coordinator.openCarDetails(carId: car.id)
+        print(car.id)
     }
 }
