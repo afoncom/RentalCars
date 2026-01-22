@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RegularCarImpl: RegularCar {
+class RegularCarImpl: Car {
     let brand: String
     
     let model: String
@@ -18,15 +18,15 @@ struct RegularCarImpl: RegularCar {
     var isRented: Bool = false
     
     func start() {
-//        started = true
+        started = true
     }
     
     func stop() {
-//        started = false
+        started = false
     }
     
     func rent(_ isRented: Bool) {
-//        self.isRented = isRented
+        self.isRented = isRented
     }
     
     

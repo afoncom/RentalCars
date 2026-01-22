@@ -33,6 +33,7 @@ extension AllCarsPresenterImpl: AllCarsPresenter {
     }
     
     func showDetails(car: RegularCarImpl) {
-        coordinator.openCarDetails(car: car)
+        coordinator.openCarDetails(carId: car.id)
+        print(car.id)
     }
 }

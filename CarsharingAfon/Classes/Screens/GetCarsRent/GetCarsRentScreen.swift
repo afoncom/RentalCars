@@ -24,22 +24,22 @@ struct GetCarsRentScreen: View {
     var body: some View {
         VStack {
             VStack(spacing: 12) {
-                Text ("Бренд: \(viewModel.selectedCar.brand)")
-                    .font(.body)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                Text("Марка: \(viewModel.selectedCar.model)")
-                    .font(.body)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                Text("Двери: \(viewModel.selectedCar.door)")
-                    .font(.body)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                Text("Окна: \(viewModel.selectedCar.window)")
-                    .font(.body)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                Text("Статус автомобиля: \(viewModel.selectedCar.isRented ? "В аренде" : "Свободно")")
-                    .font(.body)
-                    .presentationDetents([.medium])
-                    .frame(maxWidth: .infinity, alignment: .leading)
+//                Text ("Бренд: \(viewModel.selectedCarId.brand)")
+//                    .font(.body)
+//                    .frame(maxWidth: .infinity, alignment: .leading)
+//                Text("Марка: \(viewModel.selectedCar.model)")
+//                    .font(.body)
+//                    .frame(maxWidth: .infinity, alignment: .leading)
+//                Text("Двери: \(viewModel.selectedCar.door)")
+//                    .font(.body)
+//                    .frame(maxWidth: .infinity, alignment: .leading)
+//                Text("Окна: \(viewModel.selectedCar.window)")
+//                    .font(.body)
+//                    .frame(maxWidth: .infinity, alignment: .leading)
+//                Text("Статус автомобиля: \(viewModel.selectedCar.isRented ? "В аренде" : "Свободно")")
+//                    .font(.body)
+//                    .presentationDetents([.medium])
+//                    .frame(maxWidth: .infinity, alignment: .leading)
             }
             
             HStack {

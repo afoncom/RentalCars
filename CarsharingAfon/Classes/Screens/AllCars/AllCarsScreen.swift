@@ -84,7 +84,7 @@ fileprivate class AgregatorStub: Agregator {
 }
 
 fileprivate class AllCarsCoordinatorStub: AllCarsCoordinator {
-    func openCarDetails(car: RegularCarImpl) {
+    func openCarDetails(carId: String) {
         
     }
 }
