@@ -14,7 +14,7 @@ class AgregatorImpl: Agregator {
         self.carManagers = carManagers
     }
     
-    func getAllCars() -> [RegularCarImpl] {
+    func getAllCars() -> [RegularCar] {
         carManagers.flatMap { $0.getAllCars() }
     }
     
@@ -44,6 +44,10 @@ class AgregatorImpl: Agregator {
             }
         }
         return false
+    }
+    
+    func getCarById(id: String) -> RegularCar? {
+        getAllCars().first { $0.id == id }
     }
 }
 

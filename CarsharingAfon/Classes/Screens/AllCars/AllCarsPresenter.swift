@@ -7,7 +7,7 @@
 
 protocol AllCarsPresenter {
     func loadCars()
-    func showDetails(car: RegularCarImpl)
+    func showDetails(car: RegularCar)
 }
 
 final class AllCarsPresenterImpl {
@@ -32,7 +32,7 @@ extension AllCarsPresenterImpl: AllCarsPresenter {
         viewModel.allCars = agregator.getAllCars() 
     }
     
-    func showDetails(car: RegularCarImpl) {
+    func showDetails(car: RegularCar) {
         coordinator.openCarDetails(carId: car.id)
         print(car.id)
     }

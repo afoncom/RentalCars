@@ -21,6 +21,7 @@ final class AllCarsModule {
         )
         presenter.loadCars()
         
+        
         let view = AllCarsScreen(viewModel: viewModel, presenter: presenter)
         return view
     }

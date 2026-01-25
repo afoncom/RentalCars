@@ -19,52 +19,89 @@ struct GetCarsRentScreen: View {
         self.presenter = presenter
     }
     
-    
-    
     var body: some View {
         VStack {
-            VStack(spacing: 12) {
-//                Text ("Бренд: \(viewModel.selectedCarId.brand)")
-//                    .font(.body)
-//                    .frame(maxWidth: .infinity, alignment: .leading)
-//                Text("Марка: \(viewModel.selectedCar.model)")
-//                    .font(.body)
-//                    .frame(maxWidth: .infinity, alignment: .leading)
-//                Text("Двери: \(viewModel.selectedCar.door)")
-//                    .font(.body)
-//                    .frame(maxWidth: .infinity, alignment: .leading)
-//                Text("Окна: \(viewModel.selectedCar.window)")
-//                    .font(.body)
-//                    .frame(maxWidth: .infinity, alignment: .leading)
-//                Text("Статус автомобиля: \(viewModel.selectedCar.isRented ? "В аренде" : "Свободно")")
-//                    .font(.body)
-//                    .presentationDetents([.medium])
-//                    .frame(maxWidth: .infinity, alignment: .leading)
+            Spacer()
+            
+            switch viewModel.viewState {
+            case .loading:
+                Text("Загружается")
+            case .loaded:
+                VStack {
+                    makeDetailsView()
+                    makeButtonsView()
+                }
+            case .error:
+                Text("Ошибка")
             }
             
-            HStack {
-                Button(action: {}) {
-                    Text ("Взять в аренду")
-                        .frame(maxWidth: .infinity)
-                        .foregroundColor(.white)
-                        .padding()
-                }
-                .background(.green)
-                .cornerRadius(12)
-                .padding()
-                
-                Button(action: {}) {
-                    Text ("Вернуть")
-                        .frame(maxWidth: .infinity)
-                        .foregroundColor(.white)
-                        .padding()
-                }
-                .background(.red)
-                .cornerRadius(12)
-                .padding()
+            Spacer()
+        }
+        .navigationTitle("Detaling")
+        .task {
+           await presenter.loadCar(id: viewModel.selectedCarId)
+        }
+    }
+}
+
+
+
+extension GetCarsRentScreen {
+    func makeDetailsView() -> some View {
+        VStack(spacing: 12) {
+            if let car = viewModel.selectedCar {
+                Text ("Бренд: \(car.brand)")
+                    .font(.body)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                Text("Марка: \(car.model)")
+                    .font(.body)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                Text("Двери: \(car.door)")
+                    .font(.body)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                Text("Окна: \(car.window)")
+                    .font(.body)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                Text("Статус автомобиля: \(car.isRented ? "В аренде" : "Свободно")")
+                    .font(.body)
+                    .presentationDetents([.medium])
+                    .frame(maxWidth: .infinity, alignment: .leading)
             }
         }
+    }
+    func makeButtonsView() -> some View {
+        HStack {
+            Button(action: {}) {
+                Text ("Взять в аренду")
+                    .frame(maxWidth: .infinity)
+                    .foregroundColor(.white)
+                    .padding()
+            }
+            .background(.green)
+            .cornerRadius(12)
+            .padding()
+            
+            Button(action: {}) {
+                Text ("Вернуть")
+                    .frame(maxWidth: .infinity)
+                    .foregroundColor(.white)
+                    .padding()
+            }
+            .background(.red)
+            .cornerRadius(12)
+            .padding()
+        }
+    }
+}
+
+
+extension GetCarsRentScreen {
+    enum ViewState {
+        case loading
         
+        case loaded
+        
+        case error
         
     }
 }

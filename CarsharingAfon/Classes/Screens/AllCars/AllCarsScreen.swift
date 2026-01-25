@@ -54,37 +54,4 @@ struct AllCarsScreen: View {
     }
 }
 
-#Preview {
-    AllCarsScreen(
-        viewModel: AllCarsViewModel(),
-        presenter: AllCarsPresenterImpl(
-            viewModel: AllCarsViewModel(),
-            agregator: AgregatorStub(),
-            coordinator: AllCarsCoordinatorStub()
-        )
-    )
-}
 
-fileprivate class AgregatorStub: Agregator {
-    func getAllCars() -> [RegularCarImpl] {
-        []
-    }
-    
-    func deleteAllCars() {
-        
-    }
-    
-    func rent(brand: String, model: String, isRenting: Bool) -> Bool {
-        true
-    }
-    
-    func startStopCar(brand: String, model: String, isStart: Bool) -> Bool {
-        true
-    }
-}
-
-fileprivate class AllCarsCoordinatorStub: AllCarsCoordinator {
-    func openCarDetails(carId: String) {
-        
-    }
-}

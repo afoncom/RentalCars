@@ -6,7 +6,7 @@
 //
 
 protocol GetCarsRentPresenter {
-    
+    func loadCar(id: String) async
 }
 
 final class GetCarsRentPresenterImpl {
@@ -23,5 +23,14 @@ final class GetCarsRentPresenterImpl {
 }
 
 extension GetCarsRentPresenterImpl: GetCarsRentPresenter {
-    
+    func loadCar(id: String) async {
+        try? await Task.sleep(for: .seconds(5))
+        
+        if let car = agregator.getCarById(id: id) {
+            viewModel.selectedCar = car
+            viewModel.viewState = .loaded
+        } else {
+            viewModel.viewState = .error
+        }
+    }
 }
