@@ -1,5 +1,5 @@
 //
-//  RegularCarImpl.swift
+//  RegularCar.swift
 //  CarsharingAfon
 //
 //  Created by afon.com on 10.01.2026.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class RegularCarImpl: Car {
+class RegularCar: Car {
     let brand: String
     
     let model: String

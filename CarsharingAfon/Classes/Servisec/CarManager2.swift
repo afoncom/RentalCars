@@ -8,13 +8,13 @@
 import Foundation
 
 class CarManager2: CarManager {
-    private var cars: [RegularCarImpl]
+    private var cars: [RegularCar]
     
-    init(cars: [RegularCarImpl]) {
+    init(cars: [RegularCar]) {
         self.cars = cars
     }
     
-    func getAllCars() -> [RegularCarImpl] {
+    func getAllCars() -> [RegularCar] {
         cars
     }
     func deleteAllCars() {

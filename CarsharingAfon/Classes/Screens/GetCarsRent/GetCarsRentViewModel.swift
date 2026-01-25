@@ -10,8 +10,11 @@ import Combine
 
 final class GetCarsRentViewModel: ObservableObject {
     @Published var selectedCarId: String
+    @Published var selectedCar: RegularCar?
+    @Published var viewState: GetCarsRentScreen.ViewState = .loading
     
-    init(selectedCarId: String) {
+    init(selectedCarId: String, selectedCar: RegularCar? = nil) {
         self.selectedCarId = selectedCarId
+        self.selectedCar = selectedCar
     }
 }
