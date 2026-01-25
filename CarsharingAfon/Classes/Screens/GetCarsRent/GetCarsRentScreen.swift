@@ -25,7 +25,7 @@ struct GetCarsRentScreen: View {
             
             switch viewModel.viewState {
             case .loading:
-                Text("Загружается")
+                ProgressView()
             case .loaded:
                 VStack {
                     makeDetailsView()
@@ -38,6 +38,7 @@ struct GetCarsRentScreen: View {
             Spacer()
         }
         .navigationTitle("Detaling")
+        .navigationBarTitleDisplayMode(.inline)
         .task {
            await presenter.loadCar(id: viewModel.selectedCarId)
         }

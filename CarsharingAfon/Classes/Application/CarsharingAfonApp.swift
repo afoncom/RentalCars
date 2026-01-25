@@ -21,6 +21,8 @@ struct CarsharingAfonApp: App {
                         switch route {
                         case .carDetails(let carId):
                             GetCarsRentModule.build(carId: carId, agregator: appAssembly.agregator)
+                        case .addCar:
+                            AddCarModule.build(agregator: appAssembly.agregator)
                         }
                     }
             }

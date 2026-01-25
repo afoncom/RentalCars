@@ -7,6 +7,18 @@
 
 import Foundation
 
+protocol Car {
+    var brand: String { get }
+    var model: String { get }
+    var window: Int { get }
+    var door: Int { get }
+    var started: Bool { get }
+    var isRented: Bool { get }
+    func start()
+    func stop()
+    func rent(_ isRented: Bool)
+}
+
 class RegularCar: Car {
     let brand: String
     
@@ -35,5 +47,11 @@ class RegularCar: Car {
         self.door = door
         self.model = model
         self.brand = brand
+    }
+}
+
+extension Car {
+    var id: String {
+        brand + model
     }
 }

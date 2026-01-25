@@ -21,6 +21,31 @@ struct AllCarsScreen: View {
     
     
     var body: some View {
+        VStack {
+            Spacer()
+            
+            switch viewModel.viewState {
+            case .loading:
+                ProgressView()
+            case .loaded:
+                VStack {
+                    makeListAllCarsView()
+                }
+            case .error:
+                Text("Ошибка")
+            }
+
+            Spacer()
+        }
+        .task {
+            await presenter.loadCars()
+        }
+        
+    }
+}
+
+extension AllCarsScreen {
+    func makeListAllCarsView() -> some View {
         NavigationView {
             List(Array(viewModel.allCars.enumerated()), id: \.offset) { index, car in
                 VStack(alignment: .leading, spacing: 4) {
@@ -47,11 +72,24 @@ struct AllCarsScreen: View {
                     }
                 }
             }
-            .alert("Данный функционал ещё недоступен", isPresented: $viewModel.triggerAlert) {
-                Button ("ОК") { }
+            .onChange(of: viewModel.triggerAlert) {
+                oldValue, newValue in
+                if newValue {
+                    presenter.openAddCar()
+                    viewModel.triggerAlert = false
+                }
             }
         }
     }
 }
 
-
+extension AllCarsScreen {
+    enum ViewState {
+        case loading
+        
+        case loaded
+        
+        case error
+        
+    }
+}
