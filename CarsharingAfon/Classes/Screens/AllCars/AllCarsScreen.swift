@@ -63,16 +63,12 @@ extension AllCarsScreen {
             .navigationTitle("Все автомобили")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {viewModel.triggerAlert = true}) {
+                    Button(action: {
+                        presenter.openAddCar()
+                    }
+                    ) {
                         Image(systemName: "plus")
                     }
-                }
-            }
-            .onChange(of: viewModel.triggerAlert) {
-                oldValue, newValue in
-                if newValue {
-                    presenter.openAddCar()
-                    viewModel.triggerAlert = false
                 }
             }
         }

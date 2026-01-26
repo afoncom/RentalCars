@@ -10,12 +10,12 @@ import SwiftUI
 final class AddCarModule {
     
     static func build(
-        agregator: Agregator,
+        agregator: Agregator
     ) -> some View {
         let viewModel = AddCarViewModel()
         let presenter = AddCarPresenterImpl(
             viewModel: viewModel,
-            agregator: agregator,
+            agregator: agregator
         )
         
         let view = AddCarScreen(viewModel: viewModel, presenter: presenter)

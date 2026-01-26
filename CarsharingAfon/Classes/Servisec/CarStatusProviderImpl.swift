@@ -11,7 +11,7 @@ protocol CarStatusProvider {
     func rentedCars() -> [RegularCar]
 }
 
-final class CarStatusProviderImpl: CarStatusProvider {
+class CarStatusProviderImpl: CarStatusProvider {
     private var carManagers: [CarManager]
     
     init(carManagers: [CarManager]) {
