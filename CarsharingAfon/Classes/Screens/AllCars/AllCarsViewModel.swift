@@ -14,4 +14,3 @@ final class AllCarsViewModel: ObservableObject {
     @Published var viewState: AllCarsScreen.ViewState = .loading
     
 }
-

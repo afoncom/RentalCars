@@ -9,7 +9,6 @@ only_rules:
   - class_delegate_protocol                # Проверяет, что протоколы делегатов помечены как class-only
   - closing_brace                          # Корректное расположение закрывающей фигурной скобки
   - closure_end_indentation                # Выравнивание конца замыкания
-  - closure_parameter_position             # Аргументы замыкания должны быть правильно позиционированы
   - collection_alignment                   # Выравнивание элементов коллекций
   - colon                                  # Пробелы перед/после двоеточия (например, типы и словари)
   - comma                                  # Пробел после запятой, без пробела до
@@ -24,7 +23,6 @@ only_rules:
   - control_statement                      # Требует фигурные скобки для if/else/while и т.д.
   - custom_rules                           # Включает пользовательские правила (см. ниже)
   - deployment_target                      # Проверяет соответствие min deployment target для платформ
-  - direct_return                          # Упрощает return выражений без промежуточных переменных
   - discarded_notification_center_observer # Проверяет, что observer NotificationCenter не игнорируется
   - discouraged_assert                     # Предпочтение XCTAssert вместо assert() в тестах
   - discouraged_direct_init                # Запрещает прямой вызов некоторых инициализаторов (например, URLSession())
@@ -43,7 +41,6 @@ only_rules:
   - empty_parameters                       # Не допускает пустых параметров без необходимости
   - empty_parentheses_with_trailing_closure # Убирает ненужные скобки при передаче замыкания
   - empty_string                           # Использует .isEmpty вместо == ""
-  - empty_xctest_method                    # Проверяет, чтобы тесты не были пустыми
   - enum_case_associated_values_count      # Контролирует количество ассоциированных значений в enum
   - explicit_init                          # Требует явного вызова init(), если используется
   - fallthrough                            # Предупреждает использование fallthrough в switch
@@ -51,7 +48,6 @@ only_rules:
   - final_test_case                        # Тестовые классы должны быть final
   - first_where                            # Предпочитает first(where:) вместо filter.first
   - flatmap_over_map_reduce                # Предпочитает flatMap вместо map + reduce
-  - for_where                              # Проверяет корректность использования for+where
   - generic_type_name                      # Контролирует длину имени generic-типа (например, <T>)
   - ibinspectable_in_extension             # Не допускает @IBInspectable в extension
   - identical_operands                     # Проверяет сравнение переменной самой с собой
@@ -59,6 +55,7 @@ only_rules:
   - implicit_getter                        # Требует явного getter для computed property
   - implicit_return                        # Разрешает не писать return в однострочных выражениях
   - inclusive_language                     # Предупреждает потенциально некорректные термины (например, blacklist)
+  - indentation_width                     # Проверяет правильность табуляции (отступи)
   - invalid_swiftlint_command              # Предупреждает неверное использование комментариев swiftlint:disable
   - is_disjoint                            # Предпочитает isDisjoint(with:) вместо intersection.isEmpty
   - joined_default_parameter               # Не допускает ненужного использования separator: ""
@@ -91,7 +88,6 @@ only_rules:
   - redundant_optional_initialization
   - redundant_set_access_control
   - redundant_string_enum_value
-  - redundant_type_annotation
   - redundant_void_return
   - self_binding                           # Не допускает избыточного self
   - shorthand_operator                     # Использует сокращённые операторы (+=, -=)
@@ -101,7 +97,6 @@ only_rules:
   - trailing_newline
   - trailing_semicolon
   - unused_capture_list
-  - unused_closure_parameter
   - unused_control_flow_label
   - unused_enumerated
   - unused_optional_binding
@@ -123,11 +118,11 @@ analyzer_rules:
 redundant_discardable_let:
   ignore_swiftui_view_bodies: true        # Игнорировать предупреждения о discardable let внутри SwiftUI View
 
-for_where:
-  allow_for_as_filter: true               # Разрешает использование for в стиле filter
-
 number_separator:
   minimum_length: 5                       # Требует разделитель только у чисел с длиной ≥5 цифр
+
+indentation_width:
+  indentation_width: 4                    # Отступ с 4 пробелами (не табы)
 
 identifier_name:
   max_length:
@@ -149,9 +144,6 @@ identifier_name:
     - 'y1'
     - 'y2'
     - 'z2'
-
-redundant_type_annotation:
-  consider_default_literal_types_redundant: true # Считает тип лишним, если он выводится из литерала
 
 unneeded_override:
   affect_initializers: true               # Распространяет проверку на инициализаторы

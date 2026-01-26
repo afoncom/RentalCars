@@ -15,7 +15,7 @@ protocol Agregator {
     func getCarById(id: String) -> RegularCar?
 }
 
-class AgregatorImpl: Agregator {
+final class AgregatorImpl: Agregator {
     private let carManagers: [CarManager]
     
     init(carManagers: [CarManager]) {
@@ -58,4 +58,3 @@ class AgregatorImpl: Agregator {
         getAllCars().first { $0.id == id }
     }
 }
-

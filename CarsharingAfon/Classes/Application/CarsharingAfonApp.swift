@@ -9,12 +9,12 @@ import SwiftUI
 
 @main
 struct CarsharingAfonApp: App {
-    @StateObject private var coordinator = AppCoordinator()
+    @StateObject private var coordinator: AppCoordinator
     private let appAssembly: AppAssembly
     @State private var rootScreen: AllCarsScreen
     
     init() {
-         let coordinator = AppCoordinator()
+        let coordinator = AppCoordinator()
         _coordinator = StateObject(wrappedValue: coordinator)
         
         let assembly = AppAssemblyImpl()

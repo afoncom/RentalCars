@@ -6,7 +6,7 @@
 //
 
 protocol AddCarPresenter {
-
+    
 }
 
 final class AddCarPresenterImpl {
@@ -23,5 +23,5 @@ final class AddCarPresenterImpl {
 }
 
 extension AddCarPresenterImpl: AddCarPresenter {
-
+    
 }

@@ -21,8 +21,6 @@ struct GetCarsRentScreen: View {
     
     var body: some View {
         VStack {
-            Spacer()
-            
             switch viewModel.viewState {
             case .loading:
                 ProgressView()
@@ -34,13 +32,11 @@ struct GetCarsRentScreen: View {
             case .error:
                 Text("Ошибка")
             }
-            
-            Spacer()
         }
         .navigationTitle("Detaling")
         .navigationBarTitleDisplayMode(.inline)
         .task {
-           await presenter.loadCar(id: viewModel.selectedCarId)
+            await presenter.loadCar(id: viewModel.selectedCarId)
         }
     }
 }
@@ -99,11 +95,7 @@ extension GetCarsRentScreen {
 extension GetCarsRentScreen {
     enum ViewState {
         case loading
-        
         case loaded
-        
         case error
-        
     }
 }
-

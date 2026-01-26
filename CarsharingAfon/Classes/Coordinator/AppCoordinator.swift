@@ -31,5 +31,3 @@ final class AppCoordinator: ObservableObject, AllCarsCoordinator {
         path.append(Route.addCar)
     }
 }
-
-

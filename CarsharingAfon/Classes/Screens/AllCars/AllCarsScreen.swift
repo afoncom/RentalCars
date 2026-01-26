@@ -22,8 +22,6 @@ struct AllCarsScreen: View {
     
     var body: some View {
         VStack {
-            Spacer()
-            
             switch viewModel.viewState {
             case .loading:
                 ProgressView()
@@ -34,8 +32,6 @@ struct AllCarsScreen: View {
             case .error:
                 Text("Ошибка")
             }
-
-            Spacer()
         }
         .task {
             await presenter.loadCars()
@@ -86,9 +82,7 @@ extension AllCarsScreen {
 extension AllCarsScreen {
     enum ViewState {
         case loading
-        
         case loaded
-        
         case error
         
     }

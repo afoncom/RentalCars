@@ -22,20 +22,16 @@ struct AddCarScreen: View {
     
     var body: some View {
         VStack {
-            Spacer()
-            
             switch viewModel.viewState {
             case .loading:
                 ProgressView()
             case .loaded:
                 VStack {
-                  Text("Загружено")
+                    Text("Загружено")
                 }
             case .error:
                 Text("Ошибка")
             }
-
-            Spacer()
         }
         
     }
@@ -45,10 +41,7 @@ struct AddCarScreen: View {
 extension AddCarScreen {
     enum ViewState {
         case loading
-        
         case loaded
-        
         case error
-        
     }
 }

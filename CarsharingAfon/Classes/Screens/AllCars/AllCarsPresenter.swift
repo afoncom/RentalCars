@@ -29,15 +29,15 @@ final class AllCarsPresenterImpl {
 
 extension AllCarsPresenterImpl: AllCarsPresenter {
     
-    func loadCars()  {
-//        try? await Task.sleep(for: .seconds(3))
-//        
+    func loadCars() async {
+        try? await Task.sleep(for: .seconds(3))
+        
         let list = agregator.getAllCars()
-            if !list.isEmpty {
-                viewModel.allCars = list
-                viewModel.viewState = .loaded
-            } else {
-                viewModel.viewState = .error
+        if !list.isEmpty {
+            viewModel.allCars = list
+            viewModel.viewState = .loaded
+        } else {
+            viewModel.viewState = .error
         }
     }
     
