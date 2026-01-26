@@ -7,6 +7,10 @@
 
 import Foundation
 
+protocol CarStatusProvider {
+    func rentedCars() -> [RegularCar]
+}
+
 class CarStatusProviderImpl: CarStatusProvider {
     private var carManagers: [CarManager]
     

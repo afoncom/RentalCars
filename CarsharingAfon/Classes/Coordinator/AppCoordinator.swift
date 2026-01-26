@@ -10,11 +10,14 @@ import SwiftUI
 
 enum Route: Hashable, Equatable {
     case carDetails(String)
+    case addCar
 }
 
 protocol AllCarsCoordinator {
     func openCarDetails(carId: String)
+    func openAddCarView()
 }
+
 
 @MainActor
 final class AppCoordinator: ObservableObject, AllCarsCoordinator {
@@ -23,6 +26,8 @@ final class AppCoordinator: ObservableObject, AllCarsCoordinator {
     func openCarDetails(carId: String) {
         path.append(Route.carDetails(carId))
     }
+    
+    func openAddCarView() {
+        path.append(Route.addCar)
+    }
 }
-
-
